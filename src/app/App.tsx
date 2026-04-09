@@ -1,5 +1,11 @@
+import { UsersDashboard } from '../widgets/UsersDashboard';
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <UsersDashboard></UsersDashboard>
+    </>
+  );
 }
 
 export default App;

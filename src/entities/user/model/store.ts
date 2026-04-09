@@ -1,11 +1,12 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import type { RootStore } from '../../../app/store/RootStore';
-import type { User } from './user.types';
+import type { User } from './types';
 import { getUser } from '../api';
 
 class UserStore {
   users: User[] = [];
   rootStore: RootStore;
+  isLoading = false;
 
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore;
@@ -13,26 +14,27 @@ class UserStore {
   }
 
   async fetchUser() {
+    this.isLoading = true;
+
     try {
       const user = await getUser();
       runInAction(() => {
-        this.addUser(user);
+        const existing = this.users.find(u => u.id === user.id);
+        if (!existing) {
+          this.users = [...this.users, user];
+        }
       });
     } catch (error) {
       console.error(error);
+    } finally {
+      runInAction(() => {
+        this.isLoading = false;
+      });
     }
   }
 
   get allUsers(): User[] {
     return this.users;
-  }
-
-  addUser(user: User): void {
-    const existing = this.users.find(u => u.id === user.id);
-
-    if (existing) throw new Error('Already the user exists');
-
-    this.users.push(user);
   }
 
   removeUser(userId: string): void {

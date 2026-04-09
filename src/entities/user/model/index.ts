@@ -1,3 +1,3 @@
-export * from './user.types';
-export * from './user.store';
-export * from './user.constants';
+export * from './types';
+export * from './store';
+export * from './constants';

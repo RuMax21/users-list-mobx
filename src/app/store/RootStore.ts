@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import UserStore from '../../entities/user/model/user.store';
+import UserStore from '../../entities/user/model/store';
 
 class RootStore {
   userStore: UserStore;
