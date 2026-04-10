@@ -1,6 +1,7 @@
 import type { ColumnDef } from '@tanstack/react-table';
 import type { User } from '../../../entities/user/model';
 import type { UseUserColumnsProps } from './types';
+import { Button } from '../../../shared/ui';
 
 export const useUserColumns = ({
   onDelete,
@@ -29,12 +30,13 @@ export const useUserColumns = ({
     id: 'actions',
     header: '',
     cell: ({ row }) => (
-      <button
-        onClick={e => onDelete(e, row.original.id)}
-        aria-label="Delete user"
-      >
-        Delete
-      </button>
+      // <button
+      //   onClick={e => onDelete(e, row.original.id)}
+      //   aria-label="Delete user"
+      // >
+      //   Delete
+      // </button>
+      <Button onClick={e => onDelete(e, row.original.id)}>Delete</Button>
     ),
   },
 ];
