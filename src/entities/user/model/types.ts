@@ -7,5 +7,5 @@ export interface User {
   address: string;
   name: string;
   email: string;
-  dob: Date;
+  dob: string;
 }

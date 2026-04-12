@@ -43,7 +43,7 @@ export function UserEditForm({
 
         <div>
           <Button onClick={onCancel}>Cancel</Button>
-          <Button>Save</Button>
+          <Button type="submit">Save</Button>
         </div>
       </div>
     </form>
