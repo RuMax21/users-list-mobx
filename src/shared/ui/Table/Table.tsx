@@ -10,6 +10,7 @@ export const Table = <T extends object>({
   rows,
   columns,
   onRowClick,
+  noDataComponent,
 }: TableProps<T>) => {
   const table = useReactTable({
     data: rows,
@@ -21,7 +22,7 @@ export const Table = <T extends object>({
     <div className={styles.wrapper}>
       <table className={styles.table}>
         <TableHead table={table} />
-        <TableBody table={table} onRowClick={onRowClick} />
+        <TableBody table={table} onRowClick={onRowClick} noDataComponent={noDataComponent} />
       </table>
     </div>
   );

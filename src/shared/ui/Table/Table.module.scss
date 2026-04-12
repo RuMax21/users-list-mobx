@@ -44,6 +44,7 @@
   color: #374151;
   border-bottom: 1px solid #f1f5f9;
   white-space: normal;
+  cursor: pointer;
 }
 
 tbody tr:last-child .td {
@@ -52,4 +53,12 @@ tbody tr:last-child .td {
 
 .tr:nth-child(even) {
   background-color: #fcfcfd;
+}
+
+.emptyList {
+  text-align: center;
+  padding: 40px 20px;
+  color: #7c8188;
+  font-size: 20px;
+  cursor: not-allowed;
 }

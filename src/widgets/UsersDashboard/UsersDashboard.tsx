@@ -35,15 +35,12 @@ export const UsersDashboard = observer(() => {
         </button>
       </div>
 
-      {userStore.allUsers.length === 0 ? (
-        <div>No users yet</div>
-      ) : (
-        <Table
+      <Table
           rows={userStore.allUsers}
           columns={columns}
           onRowClick={(user: User) => setSelectedUser(user)}
+          noDataComponent={<div>No users yet</div>}
         />
-      )}
 
       {selectedUser && (
         <UserDialog
