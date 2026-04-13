@@ -6,6 +6,8 @@ import { useUserColumns } from './model';
 import { Table } from '../../shared/ui/Table/Table';
 import { UserDialog } from '../../features/UserDialog/UserDialog';
 import type { UserUpdateFormValues } from '../../features/UserDialog/model/types';
+import { Button } from '../../shared/ui';
+import styles from './UsersDashboard.module.scss';
 
 export const UsersDashboard = observer(() => {
   const { userStore } = useStore();
@@ -27,20 +29,20 @@ export const UsersDashboard = observer(() => {
   const columns = useUserColumns({ onDelete: handleDeleteUser });
 
   return (
-    <section>
-      <div>
-        <h1>Users</h1>
-        <button onClick={handleAddUser}>
+    <section className={styles.container}>
+      <div className={styles.header}>
+        <h1 className={styles.title}>List of users</h1>
+        <Button onClick={handleAddUser}>
           {userStore.isLoading ? 'Loading...' : 'Add User'}
-        </button>
+        </Button>
       </div>
 
       <Table
-          rows={userStore.allUsers}
-          columns={columns}
-          onRowClick={(user: User) => setSelectedUser(user)}
-          noDataComponent={<div>No users yet</div>}
-        />
+        rows={userStore.allUsers}
+        columns={columns}
+        onRowClick={(user: User) => setSelectedUser(user)}
+        noDataComponent={<div>No users yet</div>}
+      />
 
       {selectedUser && (
         <UserDialog

@@ -52,7 +52,9 @@ class UserStore {
       throw new Error('User not found');
     }
 
-    Object.assign(existing, updatedData);
+    this.users = this.users.map(user =>
+      user.id === userId ? { ...user, ...updatedData } : user,
+    );
   }
 }
 

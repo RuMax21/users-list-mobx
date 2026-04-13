@@ -1,11 +1,16 @@
 import type { FormFieldProps } from './types';
+import styles from './FormField.module.scss';
 
 export function FormField({ label, error, ...inputProps }: FormFieldProps) {
   return (
-    <div>
-      <label>{label}</label>
-      <input type="text" {...inputProps} />
-      {error && <span>{error.message}</span>}
+    <div className={styles.field}>
+      <label className={styles.label}>{label}</label>
+      <input
+        className={`${styles.input} ${error ? styles.inputError : ''}`}
+        type="text"
+        {...inputProps}
+      />
+      {error && <span className={styles.error}>{error.message}</span>}
     </div>
   );
 }
