@@ -1,5 +1,5 @@
 export const emailValidation = {
-  validate: (value: string) => {
+  validate: (value: string | undefined) => {
     if (!value) return 'Email cannot be empty';
     if (value.length < 3) return 'Email must be at least 3 char';
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
@@ -10,7 +10,8 @@ export const emailValidation = {
 };
 
 export const birthdayValidation = {
-  validate: (value: string) => {
+  validate: (value: string | undefined) => {
+    if (!value) return 'Birthday cannot be empty';
     const date = new Date(value);
     const now = new Date();
     if (isNaN(date.getTime())) return 'Invalid date';
@@ -20,7 +21,7 @@ export const birthdayValidation = {
 };
 
 export const addressValidation = {
-  validate: (value: string) => {
+  validate: (value: string | undefined) => {
     if (!value) return 'Address cannot be empty';
     if (value.length < 3) return 'Address must be at least 3 char';
     return true;

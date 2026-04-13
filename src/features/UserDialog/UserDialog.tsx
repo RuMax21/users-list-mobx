@@ -1,4 +1,3 @@
-import { Button } from '../../shared/ui';
 import type { UserDialogProps, UserUpdateFormValues } from './model/types';
 import { UserEditForm } from './ui';
 import styles from './UserDialog.module.scss';
