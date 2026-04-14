@@ -7,6 +7,7 @@ import {
   emailValidation,
 } from '../../../entities/user/model';
 import { Button } from '../../../shared/ui';
+import styles from '../UserDialog.module.scss';
 
 export function UserEditForm({
   defaultValues,
@@ -22,7 +23,7 @@ export function UserEditForm({
   return (
     <form onSubmit={handleSubmit(onSave)}>
       <div>
-        <div>
+        <div className={styles.fields}>
           <FormField
             label="Email"
             error={errors.email}
@@ -41,7 +42,7 @@ export function UserEditForm({
           />
         </div>
 
-        <div>
+        <div className={styles.actions}>
           <Button onClick={onCancel}>Cancel</Button>
           <Button type="submit">Save</Button>
         </div>

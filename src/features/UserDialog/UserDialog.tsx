@@ -1,10 +1,6 @@
-import { Button } from '../../shared/ui';
-import type {
-  UserDialogProps,
-  UserEditFormProps,
-  UserUpdateFormValues,
-} from './model/types';
+import type { UserDialogProps, UserUpdateFormValues } from './model/types';
 import { UserEditForm } from './ui';
+import styles from './UserDialog.module.scss';
 
 export function UserDialog({ user, onClose, onSave }: UserDialogProps) {
   const handleSave = (data: UserUpdateFormValues) => {
@@ -23,27 +19,25 @@ export function UserDialog({ user, onClose, onSave }: UserDialogProps) {
   };
 
   return (
-    <div onClick={handleBackdropClick}>
-      <div>
-        <Button onClick={onClose}>X</Button>
-      </div>
+    <div className={styles.backdrop} onClick={handleBackdropClick}>
+      <div className={styles.dialog}>
+        {/* <Button className={styles.closeButton} onClick={onClose}>x</Button> */}
 
-      <div>
-        <h2>{user.name}</h2>
-        <span>{user.username}</span>
-      </div>
+        <div className={styles.header}>
+          <h2 className={styles.name}>{user.name}</h2>
+          <span className={styles.username}>{user.username}</span>
+        </div>
 
-      <div>
-        <span>
-          <strong>Gender: {user.gender}</strong>
-        </span>
-      </div>
+        <div className={styles.info}>
+          <span>Gender: {user.gender}</span>
+        </div>
 
-      <UserEditForm
-        defaultValues={defaultValues}
-        onCancel={onClose}
-        onSave={handleSave}
-      />
+        <UserEditForm
+          defaultValues={defaultValues}
+          onCancel={onClose}
+          onSave={handleSave}
+        />
+      </div>
     </div>
   );
 }

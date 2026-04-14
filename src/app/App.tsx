@@ -1,9 +1,9 @@
-import { UsersDashboard } from '../widgets/UsersDashboard';
+import { HomePage } from '../pages/HomePage';
 
 function App() {
   return (
     <>
-      <UsersDashboard></UsersDashboard>
+      <HomePage />
     </>
   );
 }

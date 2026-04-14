@@ -1,9 +1,12 @@
-import { memo } from "react";
-import { flexRender } from "@tanstack/react-table";
-import type { TableBodyProps } from "../types";
+import { flexRender } from '@tanstack/react-table';
+import type { TableBodyProps } from '../types';
 import styles from '../Table.module.scss';
 
-export const TableBody = memo(<T extends object>({table, onRowClick, noDataComponent}: TableBodyProps<T>) => {
+export const TableBody = <T extends object>({
+  table,
+  onRowClick,
+  noDataComponent,
+}: TableBodyProps<T>) => {
   if (!table.getRowModel().rows.length && noDataComponent) {
     return (
       <tbody>
@@ -18,7 +21,7 @@ export const TableBody = memo(<T extends object>({table, onRowClick, noDataCompo
       </tbody>
     );
   }
-  
+
   return (
     <tbody>
       {table.getRowModel().rows.map(row => (
@@ -32,4 +35,4 @@ export const TableBody = memo(<T extends object>({table, onRowClick, noDataCompo
       ))}
     </tbody>
   );
-})
+};

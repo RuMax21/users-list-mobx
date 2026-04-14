@@ -1,0 +1,17 @@
+.container {
+  padding: 32px 24px;
+}
+
+.header {
+  max-width: 900px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #111827;
+}
